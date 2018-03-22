@@ -53,11 +53,11 @@ The configuration file must be completed by the user as it contains the username
 }
 
 Besides the self explanatory fields, here are the meanings of the rest:
-.__attachmentsPath__ is where the downloaded attachments will be saved. Must be an existing folder.
-.__allowedSubjects__ list of email subjects that will be selected for download. For now, only a single subject is allowed.
-.__allowedImageFormats__ list of allowed image formats. Change this at your own risk.
-.__allowedVideoFormats__ list of allowed video formats. Change this at your own risk.
-.__blacklist__ dictionary of email addresses that are blacklisted (won't be downloaded)
+-__attachmentsPath__ is where the downloaded attachments will be saved. Must be an existing folder.
+-__allowedSubjects__ list of email subjects that will be selected for download. For now, only a single subject is allowed.
+-__allowedImageFormats__ list of allowed image formats. Change this at your own risk.
+-__allowedVideoFormats__ list of allowed video formats. Change this at your own risk.
+-__blacklist__ dictionary of email addresses that are blacklisted (won't be downloaded)
 
 ## Behavior
 
