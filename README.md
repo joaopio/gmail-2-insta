@@ -65,8 +65,15 @@ Besides the self explanatory fields, here are the meanings of the rest:
 ## Behavior
 
 Only unread emails, with the preconfigured subject and from non blacklisted email addresses will be downloaded and checked for attachments.
+
 The application will attempt to transform images and videos into a format that Instagram accepts. The rules of Instagram for image/video sizes are taken into account before uploading as well as the creation of thumbnails for the videos.
+
 After processing, the downloaded attachments are deleted.
 
+## Roadmap
+
+- Daemonization of the application.
+- Encoding of the passwords to provide at least some visual protection.
+- Substitution of video resizing by some video cropping algorithm that avoids deforming the contents of the video.
 
   
