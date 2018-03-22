@@ -1,0 +1,15 @@
+{
+	"gmail":{
+		"username": "email@gmail.com",
+		"password": "password",
+		"attachmentsPath": "/home/username/attachments",
+		"allowedSubjects":["subject_text"],
+		"allowedImageFormats":[".jpg",".jpeg",".bmp",".gif"],
+		"allowedVideoFormats":[".mp4",".avi",".mpeg"],
+		"blacklist": {}
+	},
+	"instagram":{
+		"username": "instagram_username",
+		"password": "password"
+	}
+}
