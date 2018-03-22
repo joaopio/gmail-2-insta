@@ -38,9 +38,9 @@ class Configurations():
 				{
 				'username': Use(str),
 				'password' : Use(str),
-				'access_token' : Use(str),
-				'client_secret' : Use(str),
-				'user_id': Use(str)
+				'access_token' : Optional(Use(str)),
+				'client_secret' : Optional(Use(str)),
+				'user_id': Optional(Use(str))
 				}
 		})
 		
