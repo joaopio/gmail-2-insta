@@ -271,107 +271,39 @@ def main():
 	if not ia:
 		logger.log.critical("Failed to logon to Instagram account. Check username/password.".format(e))
 		return
+	#----------------------------------------------------------------------
 
-	#Loop all the prepared images to upload
+	#Loop all the prepared images to upload--------------------------------
 	for insta_image in insta_img_list:
 
 		if ia.uploadPhoto(insta_image.image.filename, caption=insta_image.caption):
 			logger.log.info("Uploaded photo {0}".format(insta_image.image.filename))
 		else:
 			logger.log.warning("Failed to upload photo to Instagram account.")
+	#----------------------------------------------------------------------
 
-	#Loop all the prepared videos to upload
+	#Loop all the prepared videos to upload--------------------------------
 	for insta_video in insta_video_list:
 
 		if ia.uploadVideo(insta_video.video.filename, insta_video.videoThumb, caption=insta_video.caption):
 			logger.log.info("Uploaded video {0}".format(insta_video.video.filename))
 		else:
 			logger.log.warning("Failed to upload video to Instagram account.")
-
+	#----------------------------------------------------------------------
+		
 	logger.log.info("Logging out of Instagram")
 
 	ia.logout()
 
-	#cleanup round
+	#cleanup round--------------------------------------------------------
 	for f2del in at_filelist:
 		try:
 			remove(f2del)
 			logger.log.info("Deleted file {0}".format(f2del))
 		except Exception as e:
 			logger.log.warning("Failed to cleanup file {0} due to {1}".format(f2del, e))
-	
-
-def test():
-
-	photo_path = '/home/na/gmail2Insta/attachments/'
-	pics = ["IMG-20180308-WA0003.jpg", 'logo_bck.png', 'tootall.jpg', 'toconvert.png']
-	vids = ["VID-20180315-WA0001.mp4", 'VID-20180318-WA0011.mp4', 'SampleVideo_1280x720_10mb.mp4','SampleVideo_1280x720_2mb.flv']
-
-	#Parsing stage
-	try:
-		args = arg_parse()
-	except Exception as e:
-		logger.log.critical("Could not parse arguments due to {0}".format(e))
-		return
-
-	#Start by loading the configurations file
-	configurations = cfg.Configurations()
-	try:
-		configurations.load_configurations(args.conf)
-	except Exception as e:
-		return
-
-	#Loading configurations failed
-	if not configurations:
-		return
-
-	#Instagram
-	try:	
-		ia = InstagramAPI(configurations.instagram["username"], configurations.instagram["password"])
-	except Exception as e:
-		logger.log.critical("Could not initialize instagramAPI due to {0}".format(e))
-		return
-
-	try:
-		ia.login()
-		ia.login()
-	except Exception as e:
-		logger.log.critical("Could not login to instagram due to {0}".format(e))
-		return
-
-	for vid in vids:
-
-		#Instantiate class and load the video in it
-		insta_video = InstagramVideo()
-
-		try:
-			insta_video.load(VideoFileClip(path.join(photo_path,vid), audio=False))
-			insta_video.setCaption("teste")
-		except TypeError as e:
-			logger.log.warning("Could not load video due to {0}".format(e))
-			continue
-		except Exception as e:
-			logger.log.warning("Could not load video due to {0}".format(e))
-			continue
-
-		try:
-			insta_video.instagramify()
-		except ValueError as e:
-			logger.log.warning("Could not Instagramify file {0} due to {1}".format(vid,  e))
-			continue
-		except Exception as e:
-			logger.log.warning("Could not Instagramify file {0} due to {1}".format(vid,  e))
-			continue
-
-		print insta_video.video.duration
-		print insta_video.video.size
-
-
-		if ia.isLoggedIn:
-			caption = "Sample video"
-			ia.uploadVideo(insta_video.video.filename, insta_video.videoThumb, caption=caption)
+	#----------------------------------------------------------------------
 
 if __name__ == "__main__":
 
-	#main()
-	test()
+	main()
